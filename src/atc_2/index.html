@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Actividad 2</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <header>
+      <img src="../../resources/images/banner.jpg" alt="banner" />
+    </header>
+    <main>
+      <h1>Calculadora en JS</h1>
+      <p>Haz click en el tipo de operación a realizar</p>
+      <div>
+        <button onclick="calculator('sum')"><span>Suma</span></button>
+        <button onclick="calculator('res')"><span>Resta</span></button>
+        <button onclick="calculator('mult')"><span>Multiplicar</span></button>
+        <button onclick="calculator('div')"><span>Dividir</span></button>
+      </div>
+      <div>
+        <span><strong>Resultado: </strong></span><span id="result"></span>
+      </div>
+      <div hidden>
+        <span><strong>Residuo: </strong></span><span id="remainder"></span>
+      </div>
+    </main>
+    <footer>
+      Hegar José García Rodríguez
+    </footer>
+  </body>
+</html>
