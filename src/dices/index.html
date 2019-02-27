@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Actividad 2</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <header>
+      <img src="../../resources/images/banner.jpg" alt="banner" />
+    </header>
+    <main>
+      <h1>Manejo del DOM con JS</h1>
+      <h3>Bienvenido al juego de dados</h3>
+
+      <div>
+        <div class="money">
+          <label for="money">Disponible para apostar</label>
+          <input name="money" type="number" id="money" value="100" />
+        </div>
+        <div class="bet hide">
+          <label for="bet">¿Cuánto quieres apostar?</label>
+          <input name="bet" type="number" id="bet" />
+        </div>
+      </div>
+
+      <p id="subtitle">Haz click en el botón "Jugar Ahora"</p>
+
+      <div>
+        <button id="play" onclick="play()"><span>Jugar ahora</span></button>
+        <button id="throw-dices" class="hide" onclick="startGame()">
+          <span>Lanzar dados</span>
+        </button>
+        <button id="give-up" class="hide" onclick="giveUp()">
+          <span>Retirarse</span>
+        </button>
+        <button id="reload" class="hide" onclick="reload()">
+          <span>Volver a jugar</span>
+        </button>
+      </div>
+
+      <h4 id="winner" class="hide winner">Ganaste!</h4>
+      <h4 id="loser" class="hide loser">Perdiste!</h4>
+      <h4 id="error" class="hide loser">
+        No puedes apostar más de lo que tienes
+      </h4>
+
+      <div id="final-msg">
+        <h3></h3>
+      </div>
+
+      <div class="dices">
+        <ul id="dices-list"></ul>
+      </div>
+
+      <div class="rewards"><span></span></div>
+    </main>
+    <footer>
+      Hegar José García Rodríguez
+    </footer>
+  </body>
+</html>
