@@ -1,0 +1,61 @@
+body {
+  font-family: sans-serif;
+}
+
+#principal {
+  color: brown;
+}
+
+strong {
+  color: magenta;
+}
+
+strong.destacado {
+  color: inherit;
+}
+
+#secundario {
+  color: orange;
+}
+
+li {
+  color: brown;
+}
+
+.resalte {
+  color: sienna;
+}
+
+a {
+  color: violet;
+}
+
+table {
+  color: green;
+}
+
+table caption {
+  color: blue;
+}
+
+table,
+tr,
+td,
+th {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+td,
+th {
+  padding: 0.3rem;
+}
+
+table strong {
+  color: aqua;
+}
+
+#derechos strong {
+  color: green;
+  font-style: italic;
+}
