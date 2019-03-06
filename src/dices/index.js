@@ -39,7 +39,7 @@ function startGame() {
 
   let winner = false;
   let loser = false;
-  let point = false;
+  let point = 0;
 
   do {
     const fdice = throwDice();
@@ -54,12 +54,12 @@ function startGame() {
       } else if ([2, 3, 12].includes(sum)) {
         loser = true;
       } else {
-        point = true;
+        point = sum;
       }
     } else {
       if (sum === 7) {
         loser = true;
-      } else if ([4, 5, 6, 8, 9, 10].includes(sum)) {
+      } else if (sum === point) {
         winner = true;
       }
     }
