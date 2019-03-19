@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 1.5rem;
+}
+
+/* #region Main Content */
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+
+  height: 100%;
+}
+
+.profile {
+  padding: 0.5rem;
+}
+
+.profile__picture {
+  max-width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem auto;
+}
+
+.profile__picture > img {
+  max-height: 100%;
+}
+
+.profile-details {
+  padding-left: 1.5rem;
+}
+
+.profile-details__title {
+  font-size: 0.8rem;
+  color: #616161;
+}
+
+.profile-details__list {
+  list-style: none;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+.profile-details__item:not(:first-of-type) {
+  margin-top: 1rem;
+}
+
+.profile-details__item > h1 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #414141;
+}
+
+.profile-details__item > p {
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
+  color: #616161;
+}
+
+.profile-extra {
+  margin-top: 1.5rem;
+}
+
+.profile-extra > h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #212121;
+}
+
+.profile-extra > h2 {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #424242;
+}
+
+.profile-extra > table {
+  width: 100%;
+}
+
+.profile-extra > table td {
+  padding: 1rem;
+  text-align: justify;
+}
+
+.profile-extra td h1 {
+  margin: 0;
+
+  font-size: 1.2rem;
+  font-weight: 300;
+  font-style: italic;
+  color: #212121;
+}
+
+.profile-extra td p {
+  font-size: 0.75rem;
+}
+
+.contact {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.contact > div {
+  display: inline-block;
+  height: 100%;
+  margin: 0 3rem;
+}
+
+.contact > div a {
+  text-decoration: none;
+  color: #212121;
+}
+
+.contact > div a:hover {
+  color: black;
+  font-size: 1.2rem;
+}
+
+/* #endregion */

@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Examen primer parcial</title>
+    <script type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <header>
+      <section class="header">
+        <img src="../../resources/images/banner_ucol.jpg" />
+
+        <div id="migas">
+          <p>Inicio / Datos Personales</p>
+        </div>
+
+        <div id="menu">
+          <h3>Secciones</h3>
+          <ol>
+            <li class="clickable" onclick="setMigas('Datos Personales');">
+              Datos personales
+            </li>
+            <li>
+              Procesos
+              <ul>
+                <li class="clickable" onclick="creaStock();">
+                  Stock de tienda
+                </li>
+              </ul>
+            </li>
+            <li class="clickable" onclick="setMigas('Complemento');">
+              Complemento
+            </li>
+          </ol>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <div class="ficha">
+        <h2>Ficha personal</h2>
+
+        <div class="grid">
+          <img class="profile-pic" src="../../resources/images/bitmojih.png" />
+
+          <div class="datos">
+            <h3 id="nombre"></h3>
+            <p id="profesion" class="profesion"></p>
+            <p id="procedencia" class="procedencia"></p>
+            <p id="carrera" class="carrera"></p>
+            <p id="escuela" class="escuela"></p>
+            <p id="institucion" class="institucion"></p>
+          </div>
+        </div>
+      </div>
+      <div id="procesos">
+        <h3>Área de procesos</h3>
+
+        <ul id="departments"></ul>
+      </div>
+      <div id="opcional">
+        <h3>Sección de complemento</h3>
+        <sectoin class="gallery">
+          <img src="../../resources/images/cd1.jpg" />
+          <img src="../../resources/images/cd2.jpg" />
+          <img src="../../resources/images/cd3.jpg" />
+          <img src="../../resources/images/cd4.jpg" />
+          <img src="../../resources/images/cd5.jpg" />
+          <img src="../../resources/images/cd6.jpg" />
+        </sectoin>
+      </div>
+    </main>
+
+    <footer>
+      &copy; Desarrollado por Hegar García
+    </footer>
+  </body>
+</html>
