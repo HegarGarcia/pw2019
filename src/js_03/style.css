@@ -56,17 +56,19 @@ footer {
   cursor: pointer;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   user-select: none;
 }
 
 .banner {
-  background: url(../../resources/images/banner.jpg) no-repeat center top; 
+  background: url(../../resources/images/banner.jpg) no-repeat center top;
   background-size: cover;
 }
 
 .banner2 {
-  background-image: url(../../resources/images/banner_2.jpg);
+  background-image: url(../../resources/images/banner_smash.jpg);
 }
 
 .bg {
