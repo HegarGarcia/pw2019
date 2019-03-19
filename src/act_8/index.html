@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Programación para Web</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- #region Header -->
+    <div>
+      <h1 class="title">
+        Universidad de Colima
+        <small class="subtitle is-4">Facultad de Telemática</small>
+      </h1>
+    </div>
+
+    <hr />
+
+    <!-- #region Navbar -->
+    <nav class="navbar is-dark">
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a href="#" class="navbar-item">Inicio</a>
+          <a href="#" class="navbar-item">Ventas</a>
+          <!-- lista dropdown -->
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Cat&aacute;logos</a>
+            <div class="navbar-dropdown">
+              <a href="#" class="navbar-item">Artículos</a>
+              <a href="#" class="navbar-item">Categor&iacute;a</a>
+              <a href="#" class="navbar-item">Unidades de medida</a>
+              <hr class="navbar-divider" />
+              <a href="#" class="navbar-item">Usuarios</a>
+            </div>
+          </div>
+          <a href="#" class="navbar-item">Salir</a>
+        </div>
+      </div>
+    </nav>
+    <!-- #endregion -->
+    <!-- #endregion -->
+
+    <!-- #region Content -->
+    <main>
+      <h3 class="subtitle is-4">Ventas</h3>
+
+      <div id="button-container">
+        <button class="button is-link">Agregar venta</button>
+
+        <table class="table is-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Importe</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>1</th>
+              <td>Lapiz</td>
+              <td>12.5</td>
+              <td>5</td>
+              <td>62.5</td>
+              <td>
+                <button class="button is-info">Editar</button>
+                <button class="button is-danger">Borrar</button>
+              </td>
+            </tr>
+            <tr>
+              <th>2</th>
+              <td>Libreta</td>
+              <td>22</td>
+              <td>3</td>
+              <td>66</td>
+              <td>
+                <button class="button is-info">Editar</button>
+                <button class="button is-danger">Borrar</button>
+              </td>
+            </tr>
+            <tr>
+              <th>3</th>
+              <td>Libreta profesional</td>
+              <td>18.5</td>
+              <td>3</td>
+              <td>55.5</td>
+              <td>
+                <button class="button is-info">Editar</button>
+                <button class="button is-danger">Borrar</button>
+              </td>
+            </tr>
+            <tr>
+              <th>4</th>
+              <td>Hoja</td>
+              <td>20.5</td>
+              <td>5</td>
+              <td>12.5</td>
+              <td>
+                <button class="button is-info">Editar</button>
+                <button class="button is-danger">Borrar</button>
+              </td>
+            </tr>
+            <tr>
+              <th>5</th>
+              <td>Colores</td>
+              <td>100</td>
+              <td>10</td>
+              <td>1000</td>
+              <td>
+                <button class="button is-info">Editar</button>
+                <button class="button is-danger">Borrar</button>
+              </td>
+            </tr>
+            <tr>
+              <th>6</th>
+              <td>Plumas</td>
+              <td>15</td>
+              <td>20</td>
+              <td>300</td>
+              <td>
+                <button class="button is-info">Editar</button>
+                <button class="button is-danger">Borrar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <!-- #endregion -->
+
+    <hr />
+
+    <!-- #region Footer -->
+    <div class="content has-text-centered">
+      <p>&copy; Derechos Reservados - Hegar José García Rodríguez</p>
+    </div>
+    <!-- #endregion -->
+  </body>
+</html>
