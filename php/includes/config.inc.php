@@ -44,6 +44,17 @@ defined('MODEL_PATH')
   ? null
   : define('MODEL_PATH', INCLUDE_PATH . 'models' . DS);
 defined('VIEW_PATH') ? null : define('VIEW_PATH', INCLUDE_PATH . 'views' . DS);
+defined('PARTIALS_PATH')
+  ? null
+  : define('PARTIALS_PATH', INCLUDE_PATH . 'components' . DS);
+
+// Define assets
+defined('ASSETS_PATH')
+  ? null
+  : define('ASSETS_PATH', SITE_ROOT . 'assets' . DS);
+defined('IMAGES_PATH')
+  ? null
+  : define('IMAGES_PATH', ASSETS_PATH . 'images' . DS);
 
 ////////////////////////////////////////////////////////////////////////////////
 // Include library, helpers, functions
