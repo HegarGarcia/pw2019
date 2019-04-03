@@ -1,3 +1,4 @@
+<?php $main = <<<HTML
 <main>
   <section class="section">
     <div class="container">
@@ -42,3 +43,5 @@
     </div>
   </section>
 </main>
+HTML; ?>
+<?php require VIEW_PATH . 'base.view.php'; ?>

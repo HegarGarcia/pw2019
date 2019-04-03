@@ -44,9 +44,9 @@ defined('MODEL_PATH')
   ? null
   : define('MODEL_PATH', INCLUDE_PATH . 'models' . DS);
 defined('VIEW_PATH') ? null : define('VIEW_PATH', INCLUDE_PATH . 'views' . DS);
-defined('PARTIALS_PATH')
+defined('COMPONENT_PATH')
   ? null
-  : define('PARTIALS_PATH', INCLUDE_PATH . 'components' . DS);
+  : define('COMPONENT_PATH', INCLUDE_PATH . 'components' . DS);
 
 // Define assets
 defined('ASSETS_PATH')
