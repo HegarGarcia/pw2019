@@ -14,7 +14,7 @@ setlocale(LC_MONETARY, 'en_US');
 // Define constants for database connectivty
 ////////////////////////////////////////////////////////////////////////////////
 defined('DATABASE_HOST') ? null : define('DATABASE_HOST', 'localhost');
-defined('DATABASE_NAME') ? null : define('DATABASE_NAME', 'cuartod');
+defined('DATABASE_NAME') ? null : define('DATABASE_NAME', 'hjgr');
 defined('DATABASE_USER') ? null : define('DATABASE_USER', 'root');
 defined('DATABASE_PASSWORD') ? null : define('DATABASE_PASSWORD', '');
 
@@ -61,5 +61,5 @@ defined('IMAGES_PATH')
 ////////////////////////////////////////////////////////////////////////////////
 require_once FUNCTION_PATH . 'functions.inc.php';
 require_once LIB_PATH . 'database.class.php';
-//require_once(MODEL_PATH.'usuarios.model.php');
+require_once MODEL_PATH . 'user.model.php';
 ?>

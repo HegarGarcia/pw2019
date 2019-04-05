@@ -1,11 +1,11 @@
 <?php
 
-class Usuario
+class User
 {
   public $id;
-  public $nombre;
-  public $correo;
-  public $fechaCreacion;
+  public $name;
+  public $email;
+  public $creationDate;
 
   public static function getBySql($sql)
   {
@@ -33,7 +33,7 @@ class Usuario
   public static function getAll()
   {
     // Build database query
-    $sql = 'select * from usuarios';
+    $sql = 'select * from users';
 
     // Return objects
     return self::getBySql($sql);
@@ -45,7 +45,7 @@ class Usuario
     $result = array();
 
     // Build database query
-    $sql = 'select * from usuarios where id = ?';
+    $sql = 'select * from users where id = ?';
 
     // Open database connection
     $database = new Database();
@@ -62,7 +62,7 @@ class Usuario
       $statement->execute();
 
       // Bind variable to prepared statement
-      $statement->bind_result($id, $nombre, $correo, $fechaCreacion);
+      $statement->bind_result($id, $name, $email, $creationDate);
 
       // Populate bind variables
       $statement->fetch();
@@ -77,10 +77,16 @@ class Usuario
     // Build new object
     $object = new self();
     $object->id = $id;
-    $object->nombre = $nombre;
-    $object->correo = $correo;
-    $object->fechaCreacion = $fechaCreacion;
+    $object->name = $name;
+    $object->email = $email;
+    $object->creationDate = $creationDate;
     return $object;
+  }
+
+  public static function getByEmail($email)
+  {
+    $sql = "select * from users where email = '{$email}'";
+    return self::getBySql($sql);
   }
 
   public function insert()
@@ -89,7 +95,7 @@ class Usuario
     $affected_rows = false;
 
     // Build database query
-    $sql = 'insert into usuarios (nombre, correo) values (?, ?)';
+    $sql = 'insert into users (name, email) values (?, ?)';
 
     // Open database connection
     $database = new Database();
@@ -100,7 +106,7 @@ class Usuario
     // Prepare query
     if ($statement->prepare($sql)) {
       // Bind parameters
-      $statement->bind_param('ss', $this->nombre, $this->correo);
+      $statement->bind_param('ss', $this->name, $this->email);
 
       // Execute statement
       $statement->execute();
@@ -125,7 +131,7 @@ class Usuario
     $affected_rows = false;
 
     // Build database query
-    $sql = 'update usuarios set nombre = ?, correo = ? where id = ?';
+    $sql = 'update users set name = ?, email = ? where id = ?';
 
     // Open database connection
     $database = new Database();
@@ -136,7 +142,7 @@ class Usuario
     // Prepare query
     if ($statement->prepare($sql)) {
       // Bind parameters
-      $statement->bind_param('ssi', $this->nombre, $this->correo, $this->id);
+      $statement->bind_param('ssi', $this->name, $this->email, $this->id);
 
       // Execute statement
       $statement->execute();
@@ -161,7 +167,7 @@ class Usuario
     $affected_rows = false;
 
     // Build database query
-    $sql = 'delete from usuarios where id = ?';
+    $sql = 'delete from users where id = ?';
 
     // Open database connection
     $database = new Database();
