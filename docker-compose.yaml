@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  xampp:
+    image: pw2019:latest
+    ports:
+      - 8080:80
+    volumes:
+      - /home/hjgr/Dev/PW2019/php:/opt/lampp/htdocs
+      - mysql:/opt/lampp/var/mysql
+
+volumes:
+  mysql:

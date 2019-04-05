@@ -1,6 +1,5 @@
-FROM xampp
+FROM pw2019:0.0.1
 
-VOLUME ./php /opt/lampp/htdocs
 EXPOSE 80
-RUN ["/opt/lampp/lampp", "start"]
-CMD ["/bin/bash"] 
+WORKDIR /opt/lampp
+ENTRYPOINT ./lampp start && tail -f /opt/lampp/logs/access_log
