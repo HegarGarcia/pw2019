@@ -3,8 +3,15 @@
   <?php require_once COMPONENT_PATH . 'head.partial.html'; ?>
   
   <script>
-    const openModal =(modalId) => {
+    const openModal = async (modalId, userId) => {
       document.getElementById(modalId).classList.add('is-active');
+
+      if (userId) {
+        const userResponse = await fetch(`http://localhost:8080/api/fetch-user.php?id=${userId}`);
+        const user = await userResponse.json();
+        document.querySelector(`#${modalId} [name=name]`).value = user.name;
+        document.querySelector(`#${modalId} [name=email]`).value = user.email;
+      }
     }
 
     const closeModal = (modalId) => {
@@ -14,21 +21,30 @@
     const sendData = (formId, action, modalId) => {
       const name = document.querySelector(`#${formId} [name=name]`).value;
       const email = document.querySelector(`#${formId} [name=email]`).value;
-      const data = JSON.stringify({ name, email });
+      const body = JSON.stringify({ name, email });
 
-      const request= new XMLHttpRequest();
-      request.open("POST", "add-user.php", true);
-      request.setRequestHeader("Content-type", "application/json");
-      request.send(data); 
+      fetch(`api/${action}.php`, {
+        method: "POST",
+        body,
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      });
 
       closeModal(modalId);
+      window.location.reload();
+    }
+
+    const removeUser = (userId) => {
+      fetch(`api/remove-user.php?id=${userId}`);
+      window.location.reload();
     }
   </script>
 
   <?php
   $_SESSION["email"] = $_POST["email"];
   $_SESSION["name"] = $_POST["name"];
-  $logged_user = User::getByEmail($_SESSION["email"])[0];
+  $logged_user = User::getByEmail($_SESSION["email"]);
 
   if (!$logged_user) {
     header("Location: index.php");
@@ -71,7 +87,7 @@
                       <td><?php echo $user->email; ?></td>
                       <td><?php echo $user->isAdmin == 1 ? 'Sí' : 'No'; ?></td>
                       <td>
-                        <button class="button is-info" onclick="openModal('EditUserModal')">Editar</button>
+                        <button class="button is-info" onclick="openModal('EditUserModal', <?php echo $user->id; ?>)">Editar</button>
                         <button class="button is-danger" onclick="removeUser('<?php echo $user->id; ?>')">Eliminar</button>
                       </td>
                     </tr>
@@ -135,7 +151,7 @@
           </form>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success" onclick="sendData('edit-user','edit-user', 'EditUserModal')">Save changes</button>
+          <button class="button is-success" onclick="sendData('edit-user','edit-user', 'EditUserModal')">Guardar</button>
           <button class="button" onclick="closeModal('EditUserModal')">Cancel</button>
         </footer>
       </div>
