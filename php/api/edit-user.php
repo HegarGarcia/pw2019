@@ -1,12 +1,13 @@
 <?php
+require_once '../includes/config.inc.php';
 $payload = json_decode(file_get_contents('php://input'));
 
-$user = new User();
+$user = User::getByEmail($payload->email);
 $user->name = $payload->name;
 $user->email = $payload->email;
 
-$user->insert();
+$user->update();
 
-echo $user;
+echo json_encode($user);
 
 ?>
