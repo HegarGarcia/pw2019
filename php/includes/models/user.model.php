@@ -5,6 +5,7 @@ class User
   public $id;
   public $name;
   public $email;
+  public $isAdmin;
   public $creationDate;
 
   public static function getBySql($sql)
@@ -62,7 +63,7 @@ class User
       $statement->execute();
 
       // Bind variable to prepared statement
-      $statement->bind_result($id, $name, $email, $creationDate);
+      $statement->bind_result($id, $name, $email, $isAdmin, $creationDate);
 
       // Populate bind variables
       $statement->fetch();
@@ -79,14 +80,54 @@ class User
     $object->id = $id;
     $object->name = $name;
     $object->email = $email;
+    $object->isAdmin = $isAdmin;
     $object->creationDate = $creationDate;
     return $object;
   }
 
   public static function getByEmail($email)
   {
-    $sql = "select * from users where email = '{$email}'";
-    return self::getBySql($sql);
+    // Initialize result array
+    $result = array();
+
+    // Build database query
+    $sql = "select * from users where email = ?";
+
+    // Open database connection
+    $database = new Database();
+
+    // Get instance of statement
+    $statement = $database->stmt_init();
+
+    // Prepare query
+    if ($statement->prepare($sql)) {
+      // Bind parameters
+      $statement->bind_param('s', $email);
+
+      // Execute statement
+      $statement->execute();
+
+      // Bind variable to prepared statement
+      $statement->bind_result($id, $name, $email, $isAdmin, $creationDate);
+
+      // Populate bind variables
+      $statement->fetch();
+
+      // Close statement
+      $statement->close();
+    }
+
+    // Close database connection
+    $database->close();
+
+    // Build new object
+    $object = new self();
+    $object->id = $id;
+    $object->name = $name;
+    $object->email = $email;
+    $object->isAdmin = $isAdmin;
+    $object->creationDate = $creationDate;
+    return $object;
   }
 
   public function insert()
