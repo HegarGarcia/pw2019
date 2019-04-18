@@ -2,60 +2,9 @@
 <html>
   <?php require_once COMPONENT_PATH . 'head.partial.html'; ?>
   
-  <script>
-    const openModal = async (modalId, userId) => {
-      document.getElementById(modalId).classList.add('is-active');
-
-      if (userId) {
-        const userResponse = await fetch(`http://localhost:8080/api/fetch-user.php?id=${userId}`);
-        const user = await userResponse.json();
-        document.querySelector(`#${modalId} [name=name]`).value = user.name;
-        document.querySelector(`#${modalId} [name=email]`).value = user.email;
-      }
-    }
-
-    const closeModal = (modalId) => {
-      document.getElementById(modalId).classList.remove('is-active');
-    }
-
-    const sendData = (formId, action, modalId) => {
-      const name = document.querySelector(`#${formId} [name=name]`).value;
-      const email = document.querySelector(`#${formId} [name=email]`).value;
-      const body = JSON.stringify({ name, email });
-
-      fetch(`api/${action}.php`, {
-        method: "POST",
-        body,
-        headers:{
-          'Content-Type': 'application/json'
-        }
-      });
-
-      closeModal(modalId);
-      window.location.reload();
-    }
-
-    const removeUser = (userId) => {
-      fetch(`api/remove-user.php?id=${userId}`);
-      window.location.reload();
-    }
-  </script>
-
-  <?php
-  $_SESSION["email"] = $_POST["email"];
-  $_SESSION["name"] = $_POST["name"];
-  $logged_user = User::getByEmail($_SESSION["email"]);
-
-  if (!$logged_user) {
-    header("Location: index.php");
-    die();
-  }
-
-  $users = User::getAll();
-  ?>
-
   <body>
     <?php require_once COMPONENT_PATH . 'header.partial.php'; ?>
+
     <main>
       <section class="section">
         <div class="container is-centered">
@@ -80,7 +29,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <?php foreach ($users as $user) { ?>
+                  <?php foreach (User::getAll() as $user) { ?>
                     <tr>
                       <td><?php echo $user->id; ?></td>
                       <td><?php echo $user->name; ?></td>
@@ -88,7 +37,7 @@
                       <td><?php echo $user->isAdmin == 1 ? 'Sí' : 'No'; ?></td>
                       <td>
                         <button class="button is-info" onclick="openModal('EditUserModal', <?php echo $user->id; ?>)">Editar</button>
-                        <button class="button is-danger" onclick="removeUser('<?php echo $user->id; ?>')">Eliminar</button>
+                        <button class="button is-danger" onclick="openModal('RemoveUserModal', <?php echo $user->id; ?>)">Eliminar</button>
                       </td>
                     </tr>
                   <?php } ?>
@@ -99,6 +48,7 @@
         </div>
       </section>
     </main>
+
     <?php require_once COMPONENT_PATH . 'footer.partial.html'; ?>
 
     <div class="modal" id="AddUserModal">
@@ -119,6 +69,17 @@
             <div class="field">
               <label class="label">Email</label>
               <input name="email" class="input" type="email" placeholder="Email">
+              <p name="email-error" class="help is-danger is-invisible">El email ya está registrado</p>
+            </div>
+
+            <div class="field">
+              <label class="label">Admin</label>
+              <div class="select">
+                <select name="isAdmin">
+                  <option value="1">Sí</option>
+                  <option value="0">No</option>
+                </select>
+              </div>
             </div>
           </form>
         </section>
@@ -148,6 +109,16 @@
               <label class="label">Email</label>
               <input name="email" class="input" type="email" placeholder="Email">
             </div>
+
+            <div class="field">
+              <label class="label">Admin</label>
+              <div class="select">
+                <select name="isAdmin">
+                  <option value="1">Sí</option>
+                  <option value="0">No</option>
+                </select>
+              </div>
+            </div>
           </form>
         </section>
         <footer class="modal-card-foot">
@@ -157,5 +128,25 @@
       </div>
     </div>
   
+    <div class="modal" id="RemoveUserModal">
+      <div class="modal-background"></div>    
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Eliminar Usuario</p>
+          <button class="delete" aria-label="close" onclick="closeModal('EditUserModal')"></button>
+        </header>
+        <section class="modal-card-body">
+          <p>Estas seguro que deseas borrar el usuario</p>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-danger" onclick="removeUser(this)">Borrar</button>
+          <button class="button" onclick="closeModal('RemoveUserModal')">Cancelar</button>
+        </footer> 
+      </div>
+      
+      <button class="modal-close is-large" aria-label="close" onclick="closeModal('RemoveUserModal')">>Cancelar</button>
+    </div>
+
+    <script src="../assets/js/user.view.js"></script>
 </body>
 </html>
