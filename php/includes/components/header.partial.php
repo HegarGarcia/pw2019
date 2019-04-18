@@ -13,8 +13,8 @@
             <?php if (isset($_SESSION)) { ?>
               <img src="../assets/images/profile_placeholder.png" alt="profile picture" class="profile__picture">
               <h3 class="is-size-4 has-text-weight-semibold"><?php echo $_SESSION[
-                "name"
-              ]; ?></h3>
+                "user"
+              ]->name; ?></h3>
               <a class="button is-primary" href="../../logout.php">Cerrar Sesión</a>
             <?php } ?>
           </div>

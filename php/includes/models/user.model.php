@@ -46,7 +46,7 @@ class User
     $result = array();
 
     // Build database query
-    $sql = 'select * from users where id = ?';
+    $sql = 'select id, name, email, isAdmin from users where id = ?';
 
     // Open database connection
     $database = new Database();
@@ -63,7 +63,7 @@ class User
       $statement->execute();
 
       // Bind variable to prepared statement
-      $statement->bind_result($id, $name, $email, $isAdmin, $creationDate);
+      $statement->bind_result($id, $name, $email, $isAdmin);
 
       // Populate bind variables
       $statement->fetch();
@@ -81,7 +81,6 @@ class User
     $object->name = $name;
     $object->email = $email;
     $object->isAdmin = $isAdmin;
-    $object->creationDate = $creationDate;
     return $object;
   }
 
@@ -91,7 +90,7 @@ class User
     $result = array();
 
     // Build database query
-    $sql = "select * from users where email = ?";
+    $sql = "select id, name, email, isAdmin from users where email = ?";
 
     // Open database connection
     $database = new Database();
@@ -108,7 +107,7 @@ class User
       $statement->execute();
 
       // Bind variable to prepared statement
-      $statement->bind_result($id, $name, $email, $isAdmin, $creationDate);
+      $statement->bind_result($id, $name, $email, $isAdmin);
 
       // Populate bind variables
       $statement->fetch();
@@ -126,7 +125,6 @@ class User
     $object->name = $name;
     $object->email = $email;
     $object->isAdmin = $isAdmin;
-    $object->creationDate = $creationDate;
     return $object;
   }
 
@@ -136,7 +134,7 @@ class User
     $affected_rows = false;
 
     // Build database query
-    $sql = 'insert into users (name, email) values (?, ?)';
+    $sql = 'insert into users (name, email, isAdmin) values (?, ?, ?)';
 
     // Open database connection
     $database = new Database();
@@ -147,7 +145,7 @@ class User
     // Prepare query
     if ($statement->prepare($sql)) {
       // Bind parameters
-      $statement->bind_param('ss', $this->name, $this->email);
+      $statement->bind_param('ssi', $this->name, $this->email, $this->isAdmin);
 
       // Execute statement
       $statement->execute();
