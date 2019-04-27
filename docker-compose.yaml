@@ -1,13 +1,40 @@
-version: "3"
-
+version: '3.1'
 services:
-  xampp:
-    image: pw2019:latest
+  www:
+    build: .
     ports:
-      - 8080:80
+      - '8001:8080'
     volumes:
-      - /home/hjgr/Dev/PW2019/php:/opt/lampp/htdocs
-      - mysql:/opt/lampp/var/mysql
-
+      - ./www:/var/www/html/
+    links:
+      - db
+    networks:
+      - default
+  db:
+    image: mysql:8.0
+    ports:
+      - '3306:3306'
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: hjgr
+      MYSQL_USER: hjgr
+      MYSQL_PASSWORD: pw2019
+      MYSQL_ROOT_PASSWORD: pw2019
+    volumes:
+      - ./dump:/docker-entrypoint-initdb.d
+      - ./conf:/etc/mysql/conf.d
+      - persistent:/var/lib/mysql
+    networks:
+      - default
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db:db
+    ports:
+      - 8000:80
+    environment:
+      MYSQL_USER: hjgr
+      MYSQL_PASSWORD: pw2019
+      MYSQL_ROOT_PASSWORD: pw2019
 volumes:
-  mysql:
+  persistent:

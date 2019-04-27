@@ -1,5 +1,2 @@
-FROM pw2019:0.0.1
-
-EXPOSE 80
-WORKDIR /opt/lampp
-ENTRYPOINT ./lampp start && tail -f /opt/lampp/logs/access_log
+FROM php:7.3.4-apache 
+RUN docker-php-ext-install mysqli
