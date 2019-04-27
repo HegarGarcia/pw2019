@@ -13,10 +13,10 @@ setlocale(LC_MONETARY, 'en_US');
 ////////////////////////////////////////////////////////////////////////////////
 // Define constants for database connectivty
 ////////////////////////////////////////////////////////////////////////////////
-defined('DATABASE_HOST') ? null : define('DATABASE_HOST', 'localhost');
+defined('DATABASE_HOST') ? null : define('DATABASE_HOST', 'db');
 defined('DATABASE_NAME') ? null : define('DATABASE_NAME', 'hjgr');
 defined('DATABASE_USER') ? null : define('DATABASE_USER', 'root');
-defined('DATABASE_PASSWORD') ? null : define('DATABASE_PASSWORD', '');
+defined('DATABASE_PASSWORD') ? null : define('DATABASE_PASSWORD', 'pw2019');
 
 ////////////////////////////////////////////////////////////////////////////////
 // Define absolute application paths

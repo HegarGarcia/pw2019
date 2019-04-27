@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <?php require_once COMPONENT_PATH . 'head.partial.html'; ?>
-  
+
   <body>
     <?php require_once COMPONENT_PATH . 'header.partial.php'; ?>
 
@@ -18,7 +18,7 @@
           </p>
           <div class="columns is-centered">
             <div class="column is-full has-text-centered">
-                <table class="table is-fullwidth is-striped">
+                <table id="users" class="table is-fullwidth is-striped">
                   <thead>
                   <tr>
                     <th>ID</th>
@@ -148,5 +148,15 @@
     </div>
 
     <script src="../assets/js/user.view.js"></script>
+
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        $('#users').DataTable();
+      });
+    </script>
+
 </body>
 </html>
