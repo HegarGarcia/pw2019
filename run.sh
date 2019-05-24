@@ -1,1 +1,0 @@
-docker run -it --volume=/home/hjgr/Dev/PW2019/php:/opt/lampp/htdocs -p 8080:80 --rm xampp
